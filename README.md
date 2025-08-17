@@ -1,75 +1,68 @@
-# Hand Gesture Predicting Model using CNN
+# Hand Gesture Classification using CNN
 
 ![Task_04](images/task_04_tasks.png)
 
 ## 📌 Overview
 
-This project demonstrates a complete **machine learning workflow**, including:
+This project focuses on building a **Convolutional Neural Network (CNN)** model for classifying **hand gesture images**. 
+The model is trained on a Kaggle dataset, preprocessed and augmented for better generalization, and achieves an accuracy of **97.4%**.
 
-* Data preprocessing and cleaning
-* Exploratory Data Analysis (EDA)
-* Model training and evaluation using **Random Forest**
-* Visualization of results
-
-The goal is to build and evaluate a predictive model while gaining hands-on experience with common ML techniques.
+The implementation is done in **Google Colab** using a **T4 GPU** for faster training.
 
 ---
 
-## 📂 Repository Structure
+## ⚙️ Tech Stack
 
-```
-├── task_04.ipynb     # Jupyter notebook with code and analysis
-├── README.md         # Project documentation
-```
+* **Platform**: Google Colab (T4 GPU)
+* **Programming Language**: Python
+* **Libraries Used**:
 
----
-
-## ⚙️ Installation
-
-Clone the repository and install the required dependencies:
-
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-pip install -r requirements.txt
-```
+  * `os` – Directory handling
+  * `shutil` – Splitting data into train/test folders
+  * `matplotlib` – Data visualization
+  * `tensorflow` / `keras` – Deep learning framework
+  * `pandas` – Data handling
+  * `numpy` – Numerical operations
 
 ---
 
-## 🚀 Usage
+## 📂 Workflow
 
-Open the notebook and run all cells:
+### 1. Data Loading
 
-```bash
-jupyter notebook task_04.ipynb
-```
+* Dataset imported using **`kagglehub_dataset`**.
+* Directory structure verified before preprocessing.
+
+### 2. Train-Test Split
+
+* Used **`shutil`** to copy subdirectories into **`train/`** and **`test/`** folders.
+
+### 3. Data Augmentation & Preprocessing
+
+* Used **`ImageDataGenerator`** for:
+
+  * Rescaling pixel values
+  * Augmentations (rotation, flipping, zoom, etc.)
+* Loaded images using **`flow_from_directory`**, which also handles automatic labeling.
+
+### 4. Model Architecture (CNN)
+
+* Built a **Convolutional Neural Network (CNN)** using Keras Sequential API.
+* Model parameters: **10,637,514 trainable parameters**.
+* Layers included convolution, max pooling, dropout, and fully connected layers.
+
+### 5. Training & Evaluation
+
+* Training carried out on Colab with **T4 GPU** acceleration.
+* Achieved **97.4% accuracy** on the test set.
 
 ---
 
-## 📊 Key Steps
+## 📊 Results
 
-1. **Data Preprocessing**
-
-   * Handling missing values
-   * Encoding categorical features
-   * Splitting dataset into train and test
-
-2. **Exploratory Data Analysis (EDA)**
-
-   * Descriptive statistics
-   * Visualizations
-
-3. **Model Training**
-
-   * Random Forest Classifier
-   * Performance evaluation
-
----
-
-## 📈 Results
-
-* Achieved promising performance with the **Random Forest** model.
-* Visualized key insights from data and model predictions.
+* **Training Accuracy**: \~97.4%
+* **Validation Accuracy**: Comparable to training, indicating minimal overfitting.
+* Model successfully distinguishes different hand gestures.
 
 ![accuracy](output/accuracy.png)
 
@@ -79,11 +72,44 @@ jupyter notebook task_04.ipynb
 
 ---
 
-## 🔮 Future Work
+## 🚀 How to Run
 
-* Hyperparameter tuning for better accuracy
-* Deployment of the trained model
+1. Clone the repository (if applicable)
+
+   ```bash
+   git clone https://github.com/your-username/hand-gesture-classification.git
+   cd hand-gesture-classification
+   ```
+
+2. Open in **Google Colab** and enable GPU (T4).
+
+3. Install dependencies:
+
+   ```bash
+   pip install tensorflow keras pandas numpy matplotlib
+   ```
+
+4. Load dataset via Kaggle:
+
+   ```python
+   from kagglehub_dataset import KaggleDataset
+   ```
+
+5. Run the notebook end-to-end.
 
 ---
 
+## 📌 Future Improvements
 
+* Experiment with **transfer learning** (e.g., ResNet, EfficientNet).
+* Hyperparameter tuning for further accuracy improvements.
+* Deploy model as a **web app** using Flask/Streamlit.
+
+---
+
+## 🏆 Achievements
+
+* Built a CNN with **10.6M trainable parameters**.
+* Achieved **97.4% accuracy** in hand gesture classification.
+
+---
